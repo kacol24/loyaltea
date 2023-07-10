@@ -1,0 +1,23 @@
+extend type Query {
+    #    products(
+    #        first: Int !
+    #        page: Int
+    #    ): ProductPaginator @field(resolver: "ProductList")
+    products: ProductPaginator @field(resolver: "ProductList")
+}
+
+type ProductPaginator {
+    data: [Product!]!
+    paginatorInfo: PaginatorInfo!
+}
+
+type Product {
+    id: ID!
+    name: String
+    status: ProductStatus
+}
+
+enum ProductStatus {
+    DRAFT @enum(value: "draft")
+    PUBLISHED @enum(value: "published")
+}
