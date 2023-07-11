@@ -3,13 +3,14 @@ extend type Query {
     #        first: Int !
     #        page: Int
     #    ): ProductPaginator @field(resolver: "ProductList")
-    products: ProductPaginator @field(resolver: "ProductList")
+#    products: ProductPaginator @field(resolver: "ProductList")
+    products: [Product!]! @paginate(resolver: "App\\Graphql\\Queries\\ProductList")
 }
-
-type ProductPaginator {
-    data: [Product!]!
-    paginatorInfo: PaginatorInfo!
-}
+#
+#type ProductPaginator {
+#    data: [Product!]!
+#    paginatorInfo: PaginatorInfo!
+#}
 
 type Product {
     id: ID!
